@@ -1,7 +1,7 @@
-//#include "01_led.h"
+include "01_led.h"
 
 /*
-//2Áø¼ö 
+//2ì§„ìˆ˜ 
 
 void main()
 {
@@ -9,7 +9,7 @@ void main()
 	PORTD = 0x00;
 
 	PORTD = 0b00000001;
-	_delay_ms(1000);  //ÃµºÐÀÇ Ãµ = 1ÃÊ
+	_delay_ms(1000);  //ì²œë¶„ì˜ ì²œ = 1ì´ˆ
 
 	PORTD = 0b00000010;
 	_delay_ms(1000);
@@ -36,7 +36,7 @@ void main()
 
 
 /*
-//led 8°³°¡ µ¿½Ã¿¡ ÄÑÁ³´Ù 1ÃÊÈÄ ²¨Áö´Â ÇÁ·Î±×·¥ 
+//led 8ê°œê°€ ë™ì‹œì— ì¼œì¡Œë‹¤ 1ì´ˆí›„ êº¼ì§€ëŠ” í”„ë¡œê·¸ëž¨ 
 
 void main()  
 {
@@ -52,8 +52,8 @@ void main()
 
 
 /*
-//¹Ýº¹¹® while »ç¿ëÇÏ¿© ¹Ýº¹ÇØ¼­ Ãâ·ÂÇÏ±â 
-//led8°³°¡ 4°³¾¿ ³ª´²¼­ ÄÑÁ³´Ù ²¨Á³´Ù ¹Ýº¹ÇÏ±â
+//ë°˜ë³µë¬¸ while ì‚¬ìš©í•˜ì—¬ ë°˜ë³µí•´ì„œ ì¶œë ¥í•˜ê¸° 
+//led8ê°œê°€ 4ê°œì”© ë‚˜ëˆ ì„œ ì¼œì¡Œë‹¤ êº¼ì¡Œë‹¤ ë°˜ë³µí•˜ê¸°
 
 void main()  
 {
@@ -62,7 +62,7 @@ void main()
 	while(1)
 	{
 	    PORTD = 0x0F;
-		//´«À¸·Î È®ÀÎÇÒ¼ö ¾ø´Â ½Ã°£Áö¿¬
+		//ëˆˆìœ¼ë¡œ í™•ì¸í• ìˆ˜ ì—†ëŠ” ì‹œê°„ì§€ì—°
 		PORTD = 0xF0;
 	}
 }
@@ -70,8 +70,8 @@ void main()
 
 
 /*
-//¹Ýº¹¹® while »ç¿ëÇÏ¿© ¹Ýº¹ÇØ¼­ Ãâ·ÂÇÏ±â 
-//led8°³°¡ 4°³¾¿ ³ª´²¼­ ÄÑÁ³´Ù ²¨Á³´Ù ¹Ýº¹ÇÏ±â
+//ë°˜ë³µë¬¸ while ì‚¬ìš©í•˜ì—¬ ë°˜ë³µí•´ì„œ ì¶œë ¥í•˜ê¸° 
+//led8ê°œê°€ 4ê°œì”© ë‚˜ëˆ ì„œ ì¼œì¡Œë‹¤ êº¼ì¡Œë‹¤ ë°˜ë³µí•˜ê¸°
 
 void main()
 {
@@ -90,7 +90,7 @@ void main()
 
 
 /*
-//º¯¼ö »ç¿ëÇÏ±â 
+//ë³€ìˆ˜ ì‚¬ìš©í•˜ê¸° 
 
 void main()
 {
