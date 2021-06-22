@@ -1,95 +1,21 @@
-//#include "01_led.h"
+#include "02_led_demo.h"
 
-/*  
-//2.1.1 led°¡ µ¿½Ã¿¡ ÀÏÁ¤ÇÑ °£°İÀ¸·Î Ä¿Á³´Ù ²¨Áö´Â °ÍÀ» ¹İº¹ÇÏ´Â °ÍÀ» º¸¿©ÁÖ´Â ÇÁ·Î±×·¥(45p)
-//for_¹İº¹¹®_1
-void main()   
+//ë°˜ë³µë¬¸ì„ ì‚¬ìš©í•˜ì—¬ led 8ê°œê°€ ë™ì‹œì— ì¼œì¡Œë‹¤ 1ì´ˆí›„ êº¼ì§€ëŠ” ë™ì‘ì´ ë°˜ë³µë˜ëŠ” í”„ë¡œê·¸ë¨ LV.2
+int main(void)  
 {
+    int i;
     unsigned char led_status = 0x00;
 
-	DDR_LED = 0xFF;
+    DDR_LED = 0xFF;
+    PORT_LED = led_status;
+
+    for(i=0;i<10;i++)
+    {
+        led_status = ~led_status;
 
 	PORT_LED = led_status;
+	_delay_ms(1000);
+    }
 
-	for(;;)
-	{
-	    led_status = ~led_status;  //~(tild)
-		
-		PORT_LED = led_status;
-
-		_delay_ms(500);  
-	}
-	return 0;
+    return 0;
 }
-*/
-
-
-/*  
-//2.1.1 led°¡ µ¿½Ã¿¡ ÀÏÁ¤ÇÑ °£°İÀ¸·Î Ä¿Á³´Ù ²¨Áö´Â °ÍÀ» ¹İº¹ÇÏ´Â °ÍÀ» º¸¿©ÁÖ´Â ÇÁ·Î±×·¥(45p)
-//for_Á¦ÇÑ¹İº¹¹®_1
-void main()   
-{
-	int i;
-    unsigned char led_status = 0x00;
-
-	DDR_LED = 0xFF;
-
-	PORT_LED = led_status;
-
-	for(i=0;i<10;i++)
-	{
-	    led_status = ~led_status;  //~(tild)
-		
-		PORT_LED = led_status;
-
-		_delay_ms(500);  
-	}
-	return 0;
-}
-*/
-
-
-/*  
-//led°¡ µ¿½Ã¿¡ ÀÏÁ¤ÇÑ °£°İÀ¸·Î Ä¿Á³´Ù ²¨Áö´Â °ÍÀ» ¹İº¹ÇÏ´Â °ÍÀ» º¸¿©ÁÖ´Â ÇÁ·Î±×·¥(45p)
-//while_¹İº¹¹®_1
-
-void main()   
-{
-    unsigned char led_status = 0xF0;
-
-	DDR_LED = 0xFF;
-
-	while(1)
-	{
-		led_status = ~led_status;  
-		PORT_LED = led_status;
-		_delay_ms(500);
-	}
-}
-*/
-
-
-/*  
-//2.1.1 led°¡ µ¿½Ã¿¡ ÀÏÁ¤ÇÑ °£°İÀ¸·Î Ä¿Á³´Ù ²¨Áö´Â °ÍÀ» ¹İº¹ÇÏ´Â °ÍÀ» º¸¿©ÁÖ´Â ÇÁ·Î±×·¥(45p)
-//while_¹İº¹¹®_2
-
-void main()   
-{
-    unsigned char led_status = 0xF0;
-
-	DDR_LED = 0xFF;
-
-	while(1)
-	{
-	    PORT_LED = led_status;
-		_delay_ms(500);  
-
-		PORT_LED = ~led_status;
-		_delay_ms(500);  
-
-	}
-}
-*/
-
-
- 
