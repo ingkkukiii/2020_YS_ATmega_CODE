@@ -6,20 +6,20 @@
 
 int main(void)  
 {
-	int i;
+    int i;
     unsigned char led_status = 0x00;
 
-	DDR_LED = 0xFF;
+    DDR_LED = 0xFF;
+    PORT_LED = led_status;
+
+    for(i=0;i<10;i++)
+    {
+        led_status = ~led_status;
+
 	PORT_LED = led_status;
+	_delay_ms(1000);
+    }
 
-	for(i=0;i<10;i++)
-	{
-		led_status = ~led_status;
-
-		PORT_LED = led_status;
-		_delay_ms(1000);
-	}
-
-	return 0;
+    return 0;
 }
  
