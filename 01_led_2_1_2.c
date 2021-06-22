@@ -1,43 +1,23 @@
-//#include "01_led.h"
+/*
+	title   : LED ë™ìž‘ ì œì–´ 2
+	subject : ë°˜ë³µë¬¸ì„ ì‚¬ìš©í•˜ì—¬ ledê°€ ì™¼ìª½ì—ì„œ ì˜¤ë¥¸ìª½ìœ¼ë¡œ 1ì¹¸ì”© ì´ë™í•˜ë©´ì„œ ì¼œì¡Œë‹¤ êº¼ì§€ëŠ” ë™ìž‘ì´ ë°˜ë³µë˜ëŠ” í”„ë¡œê·¸ëž¨ LV.1
+*/
+#include "02_led_demo.h"
 
-/*  
-//8°³ÀÇ led°¡ ¿ÞÂÊ¿¡¼­ ¿À¸¥ÂÊÀ¸·Î ÀÌµ¿ÇÏ¸é¼­ ÇÏ³ª¾¿ Ä×´Ù ²¨Áö´Â °ÍÀ» º¸¿©ÁÖ´Â ÇÁ·Î±×·¥(49p)
-
-void main()   
+int main(void)  
 {
 	int k = 0; 
-
-	DDRD = 0xFF;  //led Æ÷Æ®¸¦ Ãâ·Â¸ðµå·Î set
-	PORTD = 0x00;  //led Æ÷Æ® ÃÊ±âÈ­
+	DDR_LED = 0xFF;  
+	PORT_LED = 0x00;   
 
 	for(;;)	
 	{
-		PORTD = (1 << k);
-		
-//		k++;
-//	    if(k > 7) k= 0;
-		
-		if(++k > 7) k = 0;
-
-		_delay_ms(1000);
+		for(k=0;k<8;k++)	
+		{
+			PORT_LED = (1 << k);
+			_delay_ms(1000);
+		}
+		//PORT_LED = 0x00;
+		//_delay_ms(1000);
 	}
 }
-*/
-
-
-/*
-void main()
-{
-	int k = 0;
-
-	DDRD = 0xFF;
-	PORTD = 0x00;
-
-	for(k=0;k<8;k++)	
-	{
-		PORTD = (1 << k);
-		_delay_ms(1000);
-	}
-	PORTD = 0x00;
-}
-*/
