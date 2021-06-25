@@ -11,8 +11,8 @@
 
 void usart_init()
 {
-	UBRR0L = (unsigned char)BAUD_RATE_L;
 	UBRR0H = (unsigned char)BAUD_RATE_H;
+	UBRR0L = (unsigned char)BAUD_RATE_L;
 	
 	UCSR0B = (1<<TXEN) | (1<<RXEN) | (0<<UCSZ2); //19200bps, no parity, 1-stop bit, 8-data bits
 	UCSR0C = (0<<UPM1) | (0<<UPM0) | (0<<USBS) | (1<<UCSZ1) | (1<<UCSZ0);
