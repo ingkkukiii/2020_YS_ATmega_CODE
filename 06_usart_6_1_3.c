@@ -1,12 +1,61 @@
 #include "20190603_2018100055.h"
 
+int main(void)
+{
+	int k = 0;
+	unsigned char byte;
+	
+	unsigned char buf1[] = "1. LEDë™ì‹œ ì ë“± TEST\r\n";
+	unsigned char buf2[] = "2. LEDë™ì‹œ ì ë“± TEST\r\n";
+	unsigned char buf3[] = "Input number(1-2) : ";
+
+	DDRA = 0xFF;  //LEDì¶œë ¥í¬íŠ¸
+	PORTA = 0x00;
+	
+	usart_init();
+	
+   	for(;;)
+	{
+		usart_send_string(buf1, sizeof(buf1));   
+	   	usart_send_string(buf2, sizeof(buf2));
+	    	usart_send_string(buf3, sizeof(buf3));
+	
+		byte = usart_recv_byte();   
+		
+		usart_send_byte(byte); 
+		
+		if(byte == '1')
+		{
+			PORTA = 0xFF;
+			_delay_ms(1000);
+			PORTA = 0x00;
+		}
+		
+		else if(byte == '2')
+		{
+			PORTA = 0x00;
+			for(k = 0; k < 8; k++)
+			{
+				PORTA = (1 << k);
+				_delay_ms(125);
+			}
+			PORTA = 0x00;
+		}
+
+		usart_send_byte('\r');
+		usart_send_byte('\n');
+	}
+	
+	return 1;
+}
+
 /*
-//¸Ş´º¸¦ ¸¸µé¾î LED¸¦ µ¿ÀÛ½ÃÅ°´Â ÇÁ·Î±×·¥À» ÀÛ¼ºÇÏ¶ó 
+//ë©”ë‰´ë¥¼ ë§Œë“¤ì–´ LEDë¥¼ ë™ì‘ì‹œí‚¤ëŠ” í”„ë¡œê·¸ë¨ì„ ì‘ì„±í•˜ë¼ 
 
 int main(void)
 {
-	unsigned char buf1[] = "1. LEDµ¿½Ã Á¡µî TEST\r\n";
-	unsigned char buf2[] = "2. LEDµ¿½Ã Á¡µî TEST\r\n";
+	unsigned char buf1[] = "1. LEDë™ì‹œ ì ë“± TEST\r\n";
+	unsigned char buf2[] = "2. LEDë™ì‹œ ì ë“± TEST\r\n";
 	unsigned char buf3[] = "Input number(1-2) : ";
     
 	unsigned char byte; //1
@@ -18,20 +67,20 @@ int main(void)
 	UCSR0B = (1<<TXEN) | (1<<RXEN) | (0<<UCSZ2);
 	UCSR0C = (0<<UPM1) | (0<<UPM0) | (0<<USBS) | (1<<UCSZ1) | (1<<UCSZ0);
 
-    DDRA = 0xFF;  //LEDÃâ·ÂÆ÷Æ®
+    DDRA = 0xFF;  //LEDì¶œë ¥í¬íŠ¸
 
     for(;;)
 	{
-		usart_send_string(buf1, sizeof(buf1));  //Á¦¸ñÀÌ Ãâ·Â 
+		usart_send_string(buf1, sizeof(buf1));  //ì œëª©ì´ ì¶œë ¥ 
 	    usart_send_string(buf2, sizeof(buf2));
 	    usart_send_string(buf3, sizeof(buf3));
 	
-		byte = usart_recv_byte();  //µé¾î¿À±â¸¸ ÇÑ°Å ¹ÙÀÌÆ®¿¡ ÀúÀå  
-		usart_send_byte(byte);  //¼ıÀÚ°¡ ½áÁü 
+		byte = usart_recv_byte();  //ë“¤ì–´ì˜¤ê¸°ë§Œ í•œê±° ë°”ì´íŠ¸ì— ì €ì¥  
+		usart_send_byte(byte);  //ìˆ«ìê°€ ì¨ì§ 
 	
 		switch(byte)
 		{
-			case '1':  //Å°º¸µå ¹®ÀÚ 1
+			case '1':  //í‚¤ë³´ë“œ ë¬¸ì 1
 				PORTA = 0xFF;
 				_delay_ms(1000);
 				PORTA = 0x00;
